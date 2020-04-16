@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<data version="1.37.0">
+  <trigger type="periodic_timer_inexact">
+    <useDefaultName>true</useDefaultName>
+    <name>Periodic Timer Inexact: ~every 30m</name>
+    <enabled>true</enabled>
+    <inexactInterval>MINUTES_30</inexactInterval>
+    <wakeDevice>true</wakeDevice>
+    <limitTimeRange>false</limitTimeRange>
+    <weekday>Mon</weekday>
+    <weekday>Tue</weekday>
+    <weekday>Wed</weekday>
+    <weekday>Thu</weekday>
+    <weekday>Fri</weekday>
+    <weekday>Sat</weekday>
+    <weekday>Sun</weekday>
+    <hourFrom>8</hourFrom>
+    <minuteFrom>0</minuteFrom>
+    <hourTo>17</hourTo>
+    <minuteTo>0</minuteTo>
+  </trigger>
+  <condition type="expression">
+    <useDefaultName>true</useDefaultName>
+    <name>Expression: isEmpty(attr1)</name>
+    <expression>isEmpty(attr1)</expression>
+  </condition>
+  <action type="http_request">
+    <useDefaultName>true</useDefaultName>
+    <name>HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</name>
+    <url>{global_ha_addr}/api/states/{entity}</url>
+    <verifyCertificates>false</verifyCertificates>
+    <basicAuthentication>false</basicAuthentication>
+    <username></username>
+    <clientCert>false</clientCert>
+    <clientCertPath></clientCertPath>
+    <httpMethod>GET</httpMethod>
+    <networkType>DEFAULT</networkType>
+    <httpContentType>GENERAL_TEXT</httpContentType>
+    <contentType>text/plain</contentType>
+    <generalTextData></generalTextData>
+    <formFieldList>{"entity_id": "light.rgbw_1"}</formFieldList>
+    <uploadFieldName>upload_field</uploadFieldName>
+    <uploadFilePath></uploadFilePath>
+    <timeout>60000</timeout>
+    <setCustomHTTPHeaders>true</setCustomHTTPHeaders>
+    <customHTTPHeaders>{global_ha_k}</customHTTPHeaders>
+    <storeInVariable>true</storeInVariable>
+    <variable>response</variable>
+    <path>/storage/emulated/0/Download/file.bin</path>
+    <followRedirects>true</followRedirects>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "group.doors_windows" ; attr= "state" ; attr1= "" ; Unit= "" ;</name>
+    <script>entity= "group.doors_windows" ;
+attr= "state" ;
+attr1= "" ;
+Unit= "" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.batteria_antifurto" ; attr= "state" ; attr1= "" ; Unit= " V" ;</name>
+    <script>entity= "sensor.batteria_antifurto" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " V" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.degcpu" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</name>
+    <script>entity= "sensor.degcpu" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " °C" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.gas_consumato_day_peak" ; attr= "state" ; attr1= "" ; Unit= " mc" ;</name>
+    <script>entity= "sensor.gas_consumato_day_peak" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " mc" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.main_1p_kwh_day_peak" ; attr= "state" ; attr1= "" ; Unit= " kWh" ;</name>
+    <script>entity= "sensor.main_1p_kwh_day_peak" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " kWh" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.temperature_158d00034f81e8" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</name>
+    <script>entity= "sensor.temperature_158d00034f81e8" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " °C" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: entity= "sensor.temperature_158d00040fbd55" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</name>
+    <script>entity= "sensor.temperature_158d00040fbd55" ;
+attr= "state" ;
+attr1= "" ;
+Unit= " °C" ;</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_alarm_batt_v = {state+Unit}</name>
+    <script>global_ha_alarm_batt_v = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_doors_windows = {state+Unit}</name>
+    <script>global_ha_doors_windows = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_kwh_day = {state+Unit}</name>
+    <script>global_ha_kwh_day = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_metano_day = {state+Unit}</name>
+    <script>global_ha_metano_day = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_temp_cpu = {state+Unit}</name>
+    <script>global_ha_temp_cpu = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_temp_living = {state+Unit}</name>
+    <script>global_ha_temp_living = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_ha_temp_studio = {state+Unit}</name>
+    <script>global_ha_temp_studio = {state+Unit}</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: js= fromJSON(response); state= js[{attr}];</name>
+    <script>
+js= fromJSON(response);
+state= js[{attr}];
+</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: js= fromJSON(response); state= js[{attr}][{attr1}];</name>
+    <script>
+js= fromJSON(response);
+state= js[{attr}][{attr1}];
+</script>
+  </action>
+  <flow type="flow">
+    <name>HA Alarm Batt volt Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="69.99999" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t2" x="70.0" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t3" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="280.0" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t5" x="69.99998" y="1032.4999">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t6" x="280.00003" y="1032.5004">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t7" x="70.00001" y="507.5">Script: entity= "sensor.batteria_antifurto" ; attr= "state" ; attr1= "" ; Unit= " V" ;</actioncontainer>
+    <actioncontainer id="t8" x="69.99999" y="1207.5">Script: global_ha_alarm_batt_v = {state+Unit}</actioncontainer>
+    <connection from="t1" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t4" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA Doors Windows group Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="69.99999" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t2" x="70.0" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t3" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="280.0" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t5" x="69.99998" y="1032.4999">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t6" x="280.00003" y="1032.5004">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t7" x="70.0" y="507.50003">Script: entity= "group.doors_windows" ; attr= "state" ; attr1= "" ; Unit= "" ;</actioncontainer>
+    <actioncontainer id="t8" x="70.0" y="1207.5">Script: global_ha_doors_windows = {state+Unit}</actioncontainer>
+    <connection from="t1" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t4" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA kW Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <conditioncontainer id="t1" x="69.99999" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t2" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t3" x="280.00003" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="280.00006" y="1067.5002">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t5" x="70.00002" y="1067.5002">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t6" x="70.0" y="1277.5">Script: global_ha_kwh_day = {state+Unit}</actioncontainer>
+    <actioncontainer id="t7" x="70.0" y="507.50006">Script: entity= "sensor.main_1p_kwh_day_peak" ; attr= "state" ; attr1= "" ; Unit= " kWh" ;</actioncontainer>
+    <triggercontainer id="t8" x="70.0" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <connection from="t1" to="t2" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t1" to="t3" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t2" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t5" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t7" to="t1" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t8" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA Metano Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <conditioncontainer id="t1" x="69.99999" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t2" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t3" x="70.00002" y="1067.5001">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t4" x="280.00003" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t5" x="280.00006" y="1067.5002">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t6" x="70.0" y="1277.5">Script: global_ha_metano_day = {state+Unit}</actioncontainer>
+    <triggercontainer id="t7" x="70.0" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <actioncontainer id="t8" x="70.0" y="507.50003">Script: entity= "sensor.gas_consumato_day_peak" ; attr= "state" ; attr1= "" ; Unit= " mc" ;</actioncontainer>
+    <connection from="t1" to="t2" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t1" to="t4" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t8" to="t1" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA Temp. CPU Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="69.99999" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t2" x="70.0" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t3" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="280.0" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t5" x="69.99998" y="1032.4999">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t6" x="280.00003" y="1032.5004">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t7" x="70.00001" y="507.50003">Script: entity= "sensor.degcpu" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</actioncontainer>
+    <actioncontainer id="t8" x="70.0" y="1207.5">Script: global_ha_temp_cpu = {state+Unit}</actioncontainer>
+    <connection from="t1" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t4" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA Temp. Living Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <conditioncontainer id="t1" x="70.0" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t2" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t3" x="280.0" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="69.99998" y="1032.4999">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t5" x="280.00003" y="1032.5004">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t6" x="70.0" y="1207.5">Script: global_ha_temp_living = {state+Unit}</actioncontainer>
+    <triggercontainer id="t7" x="69.99999" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <actioncontainer id="t8" x="70.00001" y="507.5">Script: entity= "sensor.temperature_158d00040fbd55" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</actioncontainer>
+    <connection from="t1" to="t2" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t1" to="t3" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t2" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t8" to="t1" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>HA Temp. Studio Widget</name>
+    <group>Home assistant Requests</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="69.99999" y="332.5">
+      <trigger>Periodic Timer Inexact: ~every 30m</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t2" x="70.0" y="682.5">Expression: isEmpty(attr1)</conditioncontainer>
+    <actioncontainer id="t3" x="70.00001" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t4" x="280.0" y="857.5">HTTP Request: GET {global_ha_addr}/api/states/{entity}   store in response</actioncontainer>
+    <actioncontainer id="t5" x="69.99998" y="1032.4999">Script: js= fromJSON(response); state= js[{attr}][{attr1}];</actioncontainer>
+    <actioncontainer id="t6" x="280.00003" y="1032.5004">Script: js= fromJSON(response); state= js[{attr}];</actioncontainer>
+    <actioncontainer id="t7" x="70.0" y="507.50006">Script: entity= "sensor.temperature_158d00034f81e8" ; attr= "state" ; attr1= "" ; Unit= " °C" ;</actioncontainer>
+    <actioncontainer id="t8" x="70.0" y="1207.5">Script: global_ha_temp_studio = {state+Unit}</actioncontainer>
+    <connection from="t1" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t4" type="TRUE" sourcePosition="EAST" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="EAST" />
+    <connection from="t7" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+</data>
