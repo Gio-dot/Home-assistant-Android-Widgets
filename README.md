@@ -16,4 +16,5 @@ https://automagic4android.com/creating_custom_widget_en.html
 
 
 Links:
+
 [Automagic app ](https://play.google.com/store/apps/details?id=ch.gridvision.ppam.androidautomagic&hl=it)
